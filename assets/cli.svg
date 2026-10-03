@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">CLI</title>
+  <desc id="desc">A minimal terminal icon for command line interface tooling.</desc>
+  <rect x="5" y="16" width="118" height="96" rx="14" fill="#0D1117" stroke="#7DD3FC" stroke-width="5"/>
+  <path d="M28 47l21 18-21 18" fill="none" stroke="#E7EEF8" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M61 82h38" fill="none" stroke="#86EFAC" stroke-width="8" stroke-linecap="round"/>
+</svg>

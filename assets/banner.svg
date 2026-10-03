@@ -1,48 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
   <title id="title">K — AI Integration &amp; Systems Architect</title>
-  <desc id="desc">Terminal-style animated profile banner with a typewriter effect.</desc>
-
+  <desc id="desc">Dark terminal-style profile banner with a static fallback and a SMIL/CSS typewriter effect for renderers that support SVG animation.</desc>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#090b10"/>
+      <stop offset="0" stop-color="#090B10"/>
       <stop offset="1" stop-color="#111827"/>
     </linearGradient>
     <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#000000" flood-opacity="0.45"/>
+      <feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#000000" flood-opacity="0.42"/>
     </filter>
-    <clipPath id="line1"><rect x="72" y="132" width="0" height="38"><animate attributeName="width" dur="14s" repeatCount="indefinite" values="0;760;760;0" keyTimes="0;0.12;0.31;1"/></rect></clipPath>
-    <clipPath id="line2"><rect x="72" y="198" width="0" height="42"><animate attributeName="width" dur="14s" repeatCount="indefinite" values="0;860;860;0" keyTimes="0.18;0.34;0.55;1"/></rect></clipPath>
-    <clipPath id="line3"><rect x="72" y="270" width="0" height="42"><animate attributeName="width" dur="14s" repeatCount="indefinite" values="0;1080;1080;0" keyTimes="0.40;0.58;0.82;1"/></rect></clipPath>
     <style>
-      .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
-      .muted { fill: #7f8ea3; }
-      .bright { fill: #e5edf7; }
-      .accent { fill: #7dd3fc; }
-      .soft { fill: #a8b3c2; }
-      .cursor { animation: blink 0.9s steps(1, end) infinite; }
-      @keyframes blink { 0%, 45% { opacity: 1; } 46%, 100% { opacity: 0; } }
+      .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace}
+      .bright{fill:#E7EEF8}.muted{fill:#7E8BA0}.accent{fill:#7DD3FC}.green{fill:#86EFAC}.soft{fill:#A8B3C2}
+      .animated{opacity:0}
+      @keyframes reveal{0%,18%,100%{opacity:0}23%,78%{opacity:1}}
+      .animated{animation:reveal 10s ease-in-out infinite}
+      .cursor{animation:blink .9s steps(1,end) infinite}
+      @keyframes blink{0%,45%{opacity:1}46%,100%{opacity:0}}
     </style>
   </defs>
-
   <rect x="20" y="20" width="1160" height="380" rx="22" fill="url(#bg)" stroke="#263142" stroke-width="2" filter="url(#shadow)"/>
   <rect x="20" y="20" width="1160" height="58" rx="22" fill="#111827"/>
   <rect x="20" y="56" width="1160" height="22" fill="#111827"/>
-  <circle cx="58" cy="49" r="7" fill="#ef4444"/>
-  <circle cx="82" cy="49" r="7" fill="#f59e0b"/>
-  <circle cx="106" cy="49" r="7" fill="#22c55e"/>
+  <circle cx="58" cy="49" r="7" fill="#EF4444"/>
+  <circle cx="82" cy="49" r="7" fill="#F59E0B"/>
+  <circle cx="106" cy="49" r="7" fill="#22C55E"/>
   <text x="138" y="55" class="mono muted" font-size="18">k@systems: ~/profile</text>
-
   <text x="72" y="116" class="mono soft" font-size="19">$ ./init --profile</text>
 
-  <text x="72" y="160" class="mono accent" font-size="34" clip-path="url(#line1)">K // building systems, not noise</text>
-  <text x="72" y="160" class="mono bright" font-size="34" opacity="0">K // building systems, not noise
-    <animate attributeName="opacity" dur="14s" repeatCount="indefinite" values="0;0;1;1;0" keyTimes="0;0.12;0.13;0.31;0.32"/>
-  </text>
+  <!-- Static fallback: this remains visible on GitHub even when SVG animation is not rendered. -->
+  <g aria-label="static fallback">
+    <text x="72" y="160" class="mono accent" font-size="34">K // building systems, not noise</text>
+    <text x="72" y="226" class="mono soft" font-size="28">$ role = AI Integration &amp; Systems Architect</text>
+    <text x="72" y="298" class="mono bright" font-size="25">$ focus = backend systems · full-stack web · AI integration</text>
+    <text x="72" y="355" class="mono muted" font-size="18">$ status = learning by hand · shipping honestly · thinking in systems</text>
+  </g>
 
-  <text x="72" y="226" class="mono soft" font-size="28" clip-path="url(#line2)">$ role = AI Integration &amp; Systems Architect</text>
-  <text x="72" y="298" class="mono bright" font-size="25" clip-path="url(#line3)">$ focus = backend systems · full-stack web · AI integration</text>
-
-  <text x="72" y="355" class="mono muted" font-size="18">$ status = learning by hand · shipping honestly · thinking in systems</text>
-  <rect x="1030" y="333" width="12" height="28" rx="2" fill="#7dd3fc" class="cursor"/>
+  <!-- Optional animation layer for SVG renderers that honor CSS/SMIL animation. -->
+  <g class="animated" aria-hidden="true">
+    <rect x="70" y="133" width="0" height="34" fill="#7DD3FC">
+      <animate attributeName="width" values="0;760;760;0" keyTimes="0;0.22;0.45;1" dur="10s" repeatCount="indefinite"/>
+    </rect>
+    <text x="72" y="160" class="mono accent" font-size="34">K // building systems, not noise</text>
+  </g>
+  <rect x="1030" y="333" width="12" height="28" rx="2" fill="#7DD3FC" class="cursor"/>
 </svg>
