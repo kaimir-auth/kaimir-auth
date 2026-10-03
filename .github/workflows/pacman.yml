@@ -1,0 +1,29 @@
+name: Update Pac-Man Contribution
+
+on:
+  schedule:
+    - cron: "17 2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Generate Pac-Man SVGs
+        uses: abozanona/pacman-contribution-graph@v5.0.0
+        with:
+          github_user_name: kaimir-auth
+          games: "pacman"
+          hide_month_labels: "false"
+
+      - name: Publish to pacman-output
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: bash scripts/publish-to-branch.sh pacman-output dist "Update Pac-Man contribution graph"

@@ -1,0 +1,30 @@
+name: Update Activity Graph
+
+on:
+  schedule:
+    - cron: "57 2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Generate activity graph
+        uses: maurodesouza/github-readme-activity-graph-action@v1
+        with:
+          username: kaimir-auth
+          options: "theme=dracula&hide_border=true&area=true&radius=16&height=300&days=31&order=5"
+          output_path: dist/activity-graph.svg
+          token: ${{ secrets.GITHUB_ACTIVITY_TOKEN || secrets.GITHUB_TOKEN }}
+
+      - name: Publish to activity-graph-output
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: bash scripts/publish-to-branch.sh activity-graph-output dist "Update GitHub activity graph"

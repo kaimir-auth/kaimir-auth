@@ -1,0 +1,30 @@
+name: Update GitHub Stats
+
+on:
+  schedule:
+    - cron: "37 2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Generate GitHub stats card
+        uses: stats-organization/github-readme-stats-action@v2
+        with:
+          card: stats
+          options: "username=kaimir-auth&show_icons=true&hide_title=false&hide_rank=false&include_all_commits=true&count_private=false&disable_animations=false&theme=dracula&locale=en&hide_border=true"
+          path: dist/stats.svg
+          token: ${{ secrets.GITHUB_STATS_TOKEN || secrets.GITHUB_TOKEN }}
+
+      - name: Publish to stats-output
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: bash scripts/publish-to-branch.sh stats-output dist "Update GitHub stats card"
